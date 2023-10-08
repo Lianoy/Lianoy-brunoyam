@@ -59,5 +59,5 @@ for k in range(N):
 #print(V)
 #нумерация вершин с 0
 start = 1
-end = 45
+end = 4
 print(get_path(P,start,end))
