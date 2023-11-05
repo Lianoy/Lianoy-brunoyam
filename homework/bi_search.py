@@ -29,7 +29,7 @@ def three_max(k,*a):
 for k_ele in arrK:
     left=0
     right=n-1
-    while left <= right:
+    while (right-left) > 1:
         r = (right - left) // 2
         print(k_ele,left,right,r)
         if k_ele < arrN[r]:
