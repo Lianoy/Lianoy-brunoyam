@@ -1,0 +1,31 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form method="post">
+            <fieldset>
+                <legend>Добавление жанра</legend>
+                <label>Название: <input type="text" name="name"></label>
+                <button type="submit">Добавить</button>
+                {% if message_add != '' %}
+                  <br><label>{{message_add}}</label>
+                {% endif %}
+                {% if message_fail != '' %}
+                <p style="color: red;">{{message_fail}}</p>
+                {% endif %}
+            </fieldset>
+            <fieldset>
+              <legend>Редактирование/удаление жанров</legend>
+              <table>
+              {% for i in genres %}
+              <tr>
+                <td>{{i}}</td>
+                <td><button type="submit">Изменить</button></td>   
+                <td><button type="submit">Удалить</button></td>
+              </tr>
+              {% endfor %}
+              </div>
+          </fieldset>
+        </form>
+    </body>
+</html>
