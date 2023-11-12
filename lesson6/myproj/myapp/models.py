@@ -7,22 +7,30 @@ class Games(models.Model):
     publisher = models.CharField(max_length = 300)
     description = models.CharField(max_length = 2000)
     releaseyear = models.SmallIntegerField()
-    # cover = ImageField(upload_to="covers/", height_field=None, width_field=None, max_length=100)
-    # genres = models.ManyToManyField("Genres")
+    cover = models.ImageField(upload_to="myapp/static/covers/", blank=True)
+    genres = models.ManyToManyField("Genres")
     # platforms = models.ManyToManyField("Platforms")
     # series = models.ManyToManyField("Series")
+    def __str__(self):
+        return self.name
 
 class Genres(models.Model):
     name = models.CharField(max_length = 200)
-    games = models.ManyToManyField(Games)
+    # games = models.ManyToManyField(Games)
+    def __str__(self):
+        return self.name
 
 class Names(models.Model):
     name = models.CharField(max_length = 200)
     game = models.ForeignKey(Games, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
 
 class Platforms(models.Model):
     name = models.CharField(max_length = 200)
     games = models.ManyToManyField(Games)
+    def __str__(self):
+        return self.name
 
 class Series(models.Model):
     name = models.CharField(max_length = 200)
@@ -31,6 +39,8 @@ class Series(models.Model):
         through="GameSeries",
         through_fields=("series", "game"),
     )
+    def __str__(self):
+        return self.name
 
 class GameSeries(models.Model):
     game = models.ForeignKey(Games,on_delete=models.CASCADE)
