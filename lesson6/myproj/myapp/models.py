@@ -16,7 +16,7 @@ class Games(models.Model):
 
 class Genres(models.Model):
     name = models.CharField(max_length = 200)
-    # games = models.ManyToManyField(Games)
+    #games = models.ManyToManyField(Games)
     def __str__(self):
         return self.name
 

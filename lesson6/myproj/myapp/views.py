@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from myapp.models import Games
+from myapp.models import Games, Genres
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import redirect
+
 
 # Create your views here.
 
@@ -37,3 +38,9 @@ def registration(request):
             return HttpResponse(f"Пользователь {user.username} был создан.")
     return render(request,"auth.html",{'title':'Регистрация'})
 
+def game_page(requests,arg):
+    res = Games.objects.filter(id = arg)
+    print (res)
+    test =res[0].genres.all()
+    # genres = Genres.objects.filter(id = arg)
+    return render(requests,"game.html",{'res':res, "test":test})

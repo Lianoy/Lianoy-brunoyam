@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+    {% for i in res %}
+        <table style="margin: 20px 20px; border: 5px red; border-style: outset; ">
+            <tr>
+                <td width="300px" style="padding: 20px 20px; border: 5px red; border-style: outset;">
+                    {% if i.cover %}
+                        <img src="{% static i.cover|cut:'myapp/static/' %}" class="img-fluid rounded-start" alt="...">
+                    {% else %}
+                        ВЫВЕСТИ ДЕФАЛЬТНУЮ КАРТИНКУ "БЕЗ ОБЛОЖКИ"
+                    {% endif %}
+                </td>
+                <td colspan="2" style="text-align: left; border: 5px red; border-style: outset; padding: 20px 20px;">
+                    <iframe align="right" width="560" height="315" src="https://www.youtube.com/embed/GULWh0kvpvs?si=Flum1OaPvZoXTrrU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <h1>{{i.name}}</h1>
+                    <p>Разработчик: {{i.developer}}</p>
+                    <p>Издатель: {{i.publisher}}</p>
+                    <p>Год выхода: {{i.releaseyear}}</p>
+                    <p>Жанры: {% for j in test %} 
+                        {% if forloop.first %} 
+                            {{j}} 
+                        {% else %} 
+                            , {{j}}
+                        {% endif %}
+                        {% endfor %}</p>
+                    <p>Платформы: {{i.developer}}</p>
+                    <br>
+                    <p>Игровые серии: {{i.developer}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style=" border: 5px red; border-style: outset;">
+                    <!-- Здесь должна быть карусель скриншотов -->
+                    {{i.description}}
+                </td>
+                <td style="min-width:150px;">
+                    <b>Статьи:</b><br>
+                    <a href="какая-то ссылка">Длинное-длинное название статьи</a><br>
+                    <a href="какая-то ссылка">Длинное-длинное название статьи</a><br>
+                    <a href="какая-то ссылка">Длинное-длинное название статьи</a><br>
+                </td>
+            </tr>
+        </table>
+
+    {% endfor %}
+{% endblock %}
